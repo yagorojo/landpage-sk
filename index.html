@@ -16,18 +16,25 @@
     <nav class="w-full flex px-10 py-4 items-center border-b">
       <div class="flex-grow font-bold text-xl">LOGO</div>
       <div class="flex gap-6 items-center">
-        <ul class="flex gap-6">
+        <ul class="hidden lg:flex gap-6">
           <li>First</li>
           <li>Second</li>
           <li>Third</li>
         </ul>
+        <ul class="side top-[81px] absolute left-0 w-full bg-white z-10 border-b hidden">
+          <li class="w-full h-full px-10 py-4 hover:bg-gray-100">First</li>
+          <li class="w-full h-full px-10 py-4 hover:bg-gray-100">Second</li>
+          <li class="w-full h-full px-10 py-4 hover:bg-gray-100">Third</li>
+        </ul>
         <div>
           <button
-            class="px-9 py-3 bg-p text-white rounded hover:-translate-y-1 transition-all hover:shadow-violet-300 hover:shadow-md"
+            class="px-9 py-3 bg-p text-white rounded hover:-translate-y-1 transition-all hover:shadow-violet-300 hover:shadow-md whitespace-nowrap"
           >
             Get Started
           </button>
         </div>
+        <div class="border-r h-10 lg:hidden"></div>
+        <ion-icon class="w-8 h-8 lg:hidden side-btn" name="reorder-four-outline"></ion-icon>
       </div>
     </nav>
     <section
@@ -41,7 +48,7 @@
         </div>
         <div class="flex items-center gap-4 mt-9">
           <button
-            class="px-9 py-3 bg-p text-white rounded hover:-translate-y-1 transition-all hover:shadow-violet-300 hover:shadow-md"
+            class="px-9 py-3 bg-p text-white rounded hover:-translate-y-1 transition-all hover:shadow-violet-300 hover:shadow-md whitespace-nowrap"
           >
             Get Started
           </button>
@@ -380,6 +387,19 @@
     <!-- FAQ Accordion -->
     <script>
       const acc = document.querySelectorAll(".group");
+      const side_btn = document.querySelector(".side-btn");
+
+      side_btn.addEventListener("click", () => {
+        const side = document.querySelector(".side");
+        side.classList.toggle("hidden");
+
+        const ar = side.classList;
+        if ("hidden" === ar[ar.length - 1]) {
+            side_btn.name = "reorder-four-outline";
+          } else {
+            side_btn.name = "close-outline";
+          }
+      });
 
       acc.forEach((e) => {
         e.addEventListener("click", () => {
